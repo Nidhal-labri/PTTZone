@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             <th>Coef</th>
                             <th>CC</th>
                             <th>TP</th>
-                            <th>EMD</th>
+                            <th>EXAM</th>
                             <th>Moyenne</th>
                         </tr>
                     </thead>
@@ -612,22 +612,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function calculateAverage(subject) {
             const year = document.getElementById('yearSelect').value;
-            const subjectGrades = grades[subject.name] || { cc: '', tp: '', emd: '' };
+            const subjectGrades = grades[subject.name] || { cc: '', tp: '', exam: '' };
             const cc = parseFloat(subjectGrades.cc) || 0;
             const tp = parseFloat(subjectGrades.tp) || 0;
-            const emd = parseFloat(subjectGrades.emd) || 0;
+            const exam = parseFloat(subjectGrades.exam) || 0;
 
 
             if (subject.hasTP) {
-                return (((cc + tp) / 2 + emd * 2) / 3).toFixed(2);
+                return (((cc + tp) / 2 + exam * 2) / 3).toFixed(2);
             } else if (!subject.hasTP && !subjectGrades.cc) {
-                return emd.toFixed(2);
+                return exam.toFixed(2);
             } else {
-                return ((cc + emd * 2) / 3).toFixed(2);
+                return ((cc + exam * 2) / 3).toFixed(2);
             }
-            
-            
-
         }
 
         function calculateOverallAverage() {
@@ -667,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <td>${subject.coef}</td>
                         <td>${excludecc ? '____' : '<input type="number" min="0" max="20" value="0" step="0.01" data-subject="' + subject.name + '" data-type="cc">'}</td>
                         <td><input type="number" min="0" max="20" value="0" step="0.01" data-subject="${subject.name}" data-type="tp"></td>
-                        <td><input type="number" min="0" max="20" value="0" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
+                        <td><input type="number" min="0" max="20" value="0" step="0.01" data-subject="${subject.name}" data-type="exam"></td>
                         <td class="average"></td>
                     `;
                 } else {
@@ -676,7 +673,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <td>${subject.coef}</td>
                         <td>${excludecc ? '____' : '<input type="number" min="0" max="20" value="0" step="0.01" data-subject="' + subject.name + '" data-type="cc">'}</td>
                         <td>____</td>
-                        <td><input type="number" min="0" max="20" value="0" step="0.01" data-subject="${subject.name}" data-type="emd"></td>
+                        <td><input type="number" min="0" max="20" value="0" step="0.01" data-subject="${subject.name}" data-type="exam"></td>
                         <td class="average"></td>
                     `;
                 }
@@ -697,13 +694,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const ccInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="cc"]`);
                 const tpInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="tp"]`);
-                const emdInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="emd"]`);
+                const examInput = row.querySelector(`input[data-subject="${subject.name}"][data-type="exam"]`);
                 const averageCell = row.querySelector('.average');
 
                 grades[subject.name] = {
                     cc: ccInput ? ccInput.value : '',
                     tp: tpInput ? tpInput.value : '',
-                    emd: emdInput ? emdInput.value : ''
+                    exam: examInput ? examInput.value : ''
                 };
 
                 averageCell.textContent = calculateAverage(subject) || '-';
