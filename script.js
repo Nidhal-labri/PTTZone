@@ -288,9 +288,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         <tr>
                             <th>Matière</th>
                             <th>Coef</th>
-                            <th>- CC -</th>
-                            <th>- TP -</th>
-                            <th>- EMD -</th>
+                            <th>CC</th>
+                            <th>TP</th>
+                            <th>EMD</th>
                             <th>Moyenne</th>
                         </tr>
                     </thead>
