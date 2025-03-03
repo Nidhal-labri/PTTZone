@@ -546,23 +546,23 @@ footer a {
     .grades-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         table-layout: fixed;
     }
     .grades-table th, 
     .grades-table td {
-        padding: 4px; 
+        padding: 8px;
         word-wrap: break-word;
         text-align: center;
     }
     .grades-table th {
-        font-size: 0.7rem;
-        padding: 5px;
+        font-size: 0.9rem;
+        padding: 6px;
     }
     .grades-table .footer,
     .grades-table .footer-value {
-        font-size: 0.6rem;
-        padding: 4px;
+        font-size: 0.9rem;
+        padding: 8px;
     }
     .Tablee {
         overflow-x: hidden;
@@ -570,6 +570,7 @@ footer a {
         flex-direction: column;
         align-items: center;
     }
+
     .container {
         width: 99%;
         margin: 0 auto;
